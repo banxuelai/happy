@@ -1,0 +1,279 @@
+{% extends 'head.html' %}
+{% block head%}
+    <title>{{_cfg_.site.title}}</title>
+{%endblock%}
+{%block body%}
+  <section id="container" class="">
+      <!--header start-->
+      {%include "head_nav.html"%}
+      <!--header end-->
+      <!--sidebar start-->
+      <!--sidebar end-->
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+              <!-- page start-->
+              <div class="row">
+                  <div class="col-lg-12">
+                      <!--breadcrumbs start -->
+                      <ul class="breadcrumb">
+                          <li><a href="/home/index.html"><i class="icon-home"></i>首页</a></li>
+                          <li><a href="#">我的录入</a></li>
+                          <li class="active">录入信息</li>
+                      </ul>
+                      <!--breadcrumbs end -->
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              	录入信息
+                          </header>
+                          <div class="panel-body">
+                              <form class="form-inline" role="form">
+                              <table class="form_table" style="border-collapse:separate; border-spacing:0px 5px;" id="">
+		                          <tbody>
+		                          <tr>
+		                          	  <th class="form_table_th">二级代理</th>
+		                          	  <td>
+                                         <select class="form-control m-bot15" name='agent_id' id = "agent_id">
+                                              <option>请选择</option>
+                                              {% for key,item in agentInfo %}
+                                              <option value = "{{item.id}}">{{item.name}}</option>
+                                              {% endfor %}
+                                         </select> 
+ 									  </td>
+		                          </tr>
+		                         <tr>
+		                          	  <th class="form_table_th">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</th>
+		                          	  <td>
+                                      <input type="text" class="form-control" placeholder="请输入学员姓名"id="name"  name = "name">
+ 									  </td>
+		                          </tr>
+		                          <tr>
+		                          	  <th class="form_table_th">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</th>
+		                          	  <td>
+                                   			<label class="label_radio" for="radio-01">
+                                               <input name="gender" id="radio-01" value="m" type="radio" checked /> 男
+                                           </label>
+                                           <label class="label_radio" for="radio-02">
+                                               <input name="gender" id="radio-02" value="f" type="radio" />女
+                                           </label>
+ 									  </td>
+		                          </tr>
+		                          <tr>
+		                          	  <th class="form_table_th">联系电话</th>
+		                          	  <td>
+                                      <input type="text" class="form-control"  placeholder="请输入联系电话" id="phone" name = "phone">
+ 									  </td>
+		                          </tr>
+		                          <tr>
+		                          	  <th class="form_table_th">民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;族</th>
+		                          	  <td>
+                                      <input type="text" class="form-control" placeholder="汉" value = "汉" id="ethnic" name="ethnic" >
+ 									  </td>
+		                          </tr>
+		                          <tr>
+		                          	  <th class="form_table_th">身份证号</th>
+		                          	  <td>
+                                      <input type="text" class="form-control"  placeholder="请输入身份证号" id="ID_num"  name = "ID_num">
+ 									  </td>
+		                          </tr>
+								  <tr>
+		                          	  <th class="form_table_th">户&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;籍</th>
+		                          	  <td>
+		                          	  		<select name="province" id="province" class="form-control m-bot15">
+                                              <option>省份</option>
+                                         	</select>
+                                         	<select name="city" id="city" class="form-control m-bot15">
+                                              <option>地级市</option>
+                                         	</select>
+                                         	<select name="district" id="districtAndCounty" class="form-control m-bot15">
+                                              <option>区县</option>
+                                         	</select> 
+ 									  </td>
+		                          </tr>	
+		                          <tr>
+		                          	  <th class="form_table_th">确认点</th>
+		                          	  <td>
+		                          	  		<select name="confirm_id" id="confirm_id" class="form-control m-bot15">
+                                              <option>请选择</option>
+                                              {% for key,item in confirmInfo %}
+                                              	<option value="{{item.id}}">{{item.confirm}}</option>
+                                              {% endfor %}
+                                         	</select>
+                        			  </td>
+		                          </tr>
+		                          <tr>
+		                          	  <th class="form_table_th">报考层次</th>
+		                          	  <td>
+		                          	  		<select class="form-control m-bot15" id = "arrange" name = "arrange">
+		                          	  			<option value = '0'>请选择</option>
+		                          	  			{% for key,item in arrangeInfo %}
+		                          	  			<option value = "{{item.id}}">{{item.title}}</option>
+		                          	  			{% endfor %}
+		                          	  		</select>
+ 									  </td>
+		                          </tr>
+		                           <tr>
+		                          	  <th class="form_table_th">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;校</th>
+		                          	  <td>
+                                         <select class="form-control m-bot15" name = "school" id = "school">
+                                              <option>请选择</option>
+                                         </select> 
+ 									  </td>
+		                          </tr>
+		                           <tr>
+		                          	  <th class="form_table_th">专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业</th>
+		                          	  <td>
+                                         <select class="form-control m-bot15" name = "profess" id = "profess">
+                                              <option>请选择</option>
+                                         </select> 
+ 									  </td>
+		                          </tr>
+		                          <tr>
+		                          	  <th class="form_table_th">报名费</th>
+		                          	  <td>
+                                      <input  disabled="disabled" type="text" class="form-control" value = "300" placeholder="请输入金额" name = "entryFee" id="entryFee" >
+ 									  </td>
+		                          </tr>
+		                          
+		                          <tr>
+		                          	  <th class="form_table_th">应缴学费</th>
+		                          	  <td>
+                                      <input disabled="disabled" type="text" class="form-control"  placeholder="请输入金额" name = "fees" id="fees" >
+ 									  </td>
+		                          </tr>
+		                          <tr>
+		                          	  <th class="form_table_th">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</th>
+		                          	  <td>
+		                          	  <textarea rows="3" cols="20" class="form-control" name = "extra" id="extra"  placeholder=""></textarea >
+ 									  </td>
+		                          </tr>
+								  <tr style="border:none;">
+									<td style="text-align:center;" colspan="2">
+                                  <button type="button" class="btn btn-shadow btn-primary">保存</button>
+                                  <button type="button" class="btn btn-shadow btn-default" onclick="javascript:window.location.href='/student/lists.html'">取消</button>								
+									</td>
+								  </tr>
+		                          </tbody>
+		                          </table>
+                              </form>
+                          </div>
+                      </section>
+                  </div>
+              </div>
+
+              <!-- page end-->
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+{%include "foot.html"%}  
+<!-- script for city -->
+<script src = "{{_cfg_.site.static_base}}/js/city.js"></script>
+<script type="text/javascript">
+
+//select 联动 根据层次获取学校
+$("#arrange").change(function(){
+	var  arrange = $(this).val();
+	$.ajax({
+		url: '/operation/schoolInfo.json',
+		method: 'POST',
+		data:{arrange:arrange},  
+		success: function(re){
+			$("#school").find('option').remove();
+			$("#school").append("<option>请选择</option>");
+		    $.each(re.data,function(name,value) {
+				$("#school").append("<option value='"+value['id']+"'>"+value['title']+"</option>"); 
+	        });			
+		}
+	});
+});
+//select 联动 根据学校获取专业
+$("#school").change(function(){
+	var  school = $(this).val();
+	$.ajax({
+		url: '/operation/professInfo.json',
+		method: 'POST',
+		data:{school:school},  
+		success: function(re){
+			$("#profess").find('option').remove();
+			$("#profess").append("<option>请选择</option>");
+		    $.each(re.data,function(name,value) {
+				$("#profess").append("<option value='"+value['id']+"'>"+value['title']+"</option>"); 
+	        });			
+		}
+	});
+});
+
+//select 联动 根据专业获取学费
+$("#profess").change(function(){
+	var  profess = $(this).val();
+	$.ajax({
+		url: '/operation/feesInfo.json',
+		method: 'POST',
+		data:{profess:profess},  
+		success: function(re){
+			$("#fees").val(re.data);
+		}
+	});
+});
+
+//提交按钮
+$('.btn-primary').click(function(){
+	var agent_id = $("#agent_id").val();
+	var name = $("#name").val();
+	var gender = $("input[type='radio']:checked").val();
+	var phone = $("#phone").val();
+	var ethnic = $("#ethnic").val();
+	var ID_num = $("#ID_num").val();
+	var province = $("#province").find("option:selected").text();
+	var city = $("#city").find("option:selected").text();
+	var district = $("#districtAndCounty").find("option:selected").text();
+	var confirm_id = $("#confirm_id").val();
+	var arrange = $("#arrange").val();
+	var professType = $("#professType").val();
+	var school = $("#school").val();
+	var profess = $("#profess").val();
+	var entryFee = $("#entryFee").val();
+	var fees = $("#fees").val();
+	var extra = $("#extra").val();
+	
+	var adddata = {
+			agent_id:agent_id,
+			name:name,
+			gender:gender,
+			phone:phone,
+			ethnic:ethnic,
+			ID_num:ID_num,
+			province:province,
+			city:city,
+			district:district,
+			confirm_id:confirm_id,
+			arrange:arrange,
+			professType:professType,
+			school:school,
+			profess:profess,
+			entryFee:entryFee,
+			fees:fees,
+			extra:extra
+	}
+	$.ajax({
+		url: '/student/add.json',
+		method: 'POST',
+		data:adddata,  
+		success: function(re){
+			if(re.error_code > 0){
+				alert(re.error_msg);
+				return false;
+			}
+			else{
+				location.href = "/student/lists.html";
+			}			
+		}
+	});
+});
+</script>
+{%endblock%}

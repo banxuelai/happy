@@ -1,0 +1,194 @@
+{% extends 'head.html' %}
+{% block head%}
+    <title>{{_cfg_.site.title}}</title>
+{%endblock%}
+{%block body%}
+  <section id="container" class="">
+      <!--header start-->
+      {%include "head_nav.html"%}
+      <!--header end-->
+      <!--sidebar start-->
+      <!--sidebar end-->
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+              <!-- page start-->
+              <div class="row">
+                  <div class="col-lg-12">
+                      <!--breadcrumbs start -->
+                      <ul class="breadcrumb">
+                          <li><a href="/home/index.html"><i class="icon-home"></i>首页</a></li>
+                          <li><a href="#">我的录入</a></li>
+                          <li class="active">修改信息</li>
+                      </ul>
+                      <!--breadcrumbs end -->
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              	 修改信息
+                          </header>
+                          <div class="panel-body">
+                              <form class="form-inline" role="form">
+                              <table class="form_table" style="border-collapse:separate; border-spacing:0px 5px;" id="">
+		                          <tbody>
+		                         <tr>
+		                          	  <th class="form_table_th">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</th>
+		                          	  <td>
+		                          	  {{studentInfo.name}}
+ 									  </td>
+		                          </tr>
+		                          <tr>
+		                          	  <th class="form_table_th">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:</th>
+		                          	  <td>
+											{{studentInfo.gender}}
+ 									  </td>
+		                          </tr>
+		                          <tr>
+		                          	  <th class="form_table_th">联系电话:</th>
+		                          	  <td>
+		                          	  {{studentInfo.phone}}
+ 									  </td>
+		                          </tr>
+								  <tr>
+		                          	  <th class="form_table_th">户&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;籍:</th>
+		                          	  <td>
+		                          	 {{studentInfo.province}}{{studentInfo.city}}{{studentInfo.district}}
+ 									  </td>
+		                          </tr>	
+		                          <tr>
+		                          	  <th class="form_table_th">确认点:</th>
+		                          	  <td>
+											{{studentInfo.confirm}}
+                        			  </td>
+		                          </tr>
+		                           <tr>
+		                          	  <th class="form_table_th">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;校:</th>
+		                          	  <td>
+											{{studentInfo.school_name}}
+ 									  </td>
+		                          </tr>
+		                           <tr>
+		                          	  <th class="form_table_th">专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业:</th>
+		                          	  <td>
+   											{{studentInfo.profess_name}}
+ 									  </td>
+		                          </tr>
+		                          <tr>
+		                          	  <th class="form_table_th">报名费:</th>
+		                          	  <td>
+		                          	  		{{studentInfo.entryFee}}
+ 									  </td>
+		                          </tr>
+		                          
+		                          <tr>
+		                          	  <th class="form_table_th">应缴学费:</th>
+		                          	  <td>
+		                          	  	{{studentInfo.fees}}
+		                          	  	<input type = "hidden" value = "{{studentInfo.fees}}" id = "fees" name = "fees">
+ 									  </td>
+		                          </tr>
+		                          <tr>
+		                          	  <th class="form_table_th">缴费1:</th>
+		                          	  <td>
+		                          	  		{% if studentInfo.fees1 == 0 %}
+			                          	      <label class="label_radio" for="radio-01">
+	                                               <input name="fees1" id="radio-01" value="0" type="radio" checked />否
+	                                           </label>
+	                                           <label class="label_radio" for="radio-02">
+	                                               <input name="fees1" id="radio-02" value="1" type="radio" />是
+	                                           </label>
+                                            {%else%}
+                                            {{studentInfo.fees1}}
+                                            {%endif%}
+ 									  </td>
+		                          </tr>
+		                          		                          <tr>
+		                          	  <th class="form_table_th">缴费2:</th>
+		                          	  <td>
+		                          	        {% if studentInfo.fees2 == 0 %}
+			                          	       <label class="label_radio" for="radio-03">
+	                                               <input name="fees2" id="radio-03" value="0" type="radio" checked /> 否
+	                                           </label>
+	                                           <label class="label_radio" for="radio-04">
+	                                               <input name="fees2" id="radio-04" value="1" type="radio" />是
+	                                           </label>
+                                            {%else%}
+                                            {{studentInfo.fees2}}
+                                            {%endif%}
+		                          	  	
+ 									  </td>
+		                          </tr>
+		                          		                          <tr>
+		                          	  <th class="form_table_th">合计缴费:</th>
+		                          	  <td>
+		                          	  	{{studentInfo.all_fees}}
+ 									  </td>
+		                          </tr>
+		                          <tr>
+		                          	  <th class="form_table_th">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注:</th>
+		                          	  <td>
+		                          	  		{{studentInfo.extra}}
+ 									  </td>
+		                          </tr>
+								  <tr style="border:none;">
+									<td style="text-align:center;" colspan="2">
+									<input type = "hidden" value = "{{studentInfo.id}}" id = "student_id" name = "student_id">
+									{% if studentInfo.fees1 == 0 or studentInfo.fees2 == 0 %} 
+									<button type="button" class="btn btn-shadow btn-primary">修改</button>
+									{% endif %}
+                                  <button type="button" class="btn btn-shadow btn-default" onclick="javascript:window.location.href='/student/lists.html'">返回</button>								
+									</td>
+								  </tr>
+		                          </tbody>
+		                          </table>
+                              </form>
+                          </div>
+                      </section>
+                  </div>
+              </div>
+
+              <!-- page end-->
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+{%include "foot.html"%}  
+
+<script type="text/javascript">
+//提交按钮
+$('.btn-primary').click(function(){
+	var fees1 = $("input[name='fees1']:checked").val();
+	var fees2 = $("input[name='fees2']:checked").val();
+	var student_id = $("#student_id").val();
+	$.ajax({
+		url: '/student/edit.json',
+		method: 'POST',
+		data:{fees1:fees1,fees2:fees2,student_id:student_id},  
+		success: function(re){
+			if(re.error_code > 0){
+				alert(re.error_msg);
+				return false;
+			}
+			else{
+				location.href = "/student/lists.html";
+			}			
+		}
+	});
+});
+$("#radio-02").click(function(){
+	var fees  = $("#fees").val();
+	var fees1 = fees * 0.4;
+	var str = '确认缴费1为  '+fees + ' * 40% = '+fees1;
+	alert(str);
+});
+$("#radio-04").click(function(){
+	var fees  = $("#fees").val();
+	var fees2 = fees * 0.6;
+	var radstr = '确认缴费2为  '+fees + ' * 60% = '+fees2;
+	alert(radstr);
+}); 
+</script>
+{%endblock%}

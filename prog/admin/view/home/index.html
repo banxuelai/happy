@@ -1,0 +1,23 @@
+{% extends 'head.html' %}
+{% block head%}
+    <title>{{_cfg_.site.title}}</title>
+{%endblock%}
+{%block body%}
+  <section id="container" class="">
+      <!--header start-->
+      {%include "head_nav.html"%}	
+      <!--header end-->
+      <!--sidebar start-->
+      <!--sidebar end-->
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+              <!-- page start-->
+              <span style="font-size:20px">欢迎您，{{name}}</span>
+              <!-- page end-->
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+{%include "foot.html"%}
+{%endblock%}

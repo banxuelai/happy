@@ -1,0 +1,350 @@
+{% extends 'head.html' %}
+{% block head%}
+    <title>{{_cfg_.site.title}}</title>
+{%endblock%}
+{%block body%}
+  <section id="container" class="">
+      <!--header start-->
+      {%include "head_nav.html"%}
+      <!--header end-->
+      <!--sidebar start-->
+      <!--sidebar end-->
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+              <!-- page start-->
+              <div class="row">
+                  <div class="col-lg-12">
+                      <!--breadcrumbs start -->
+                      <ul class="breadcrumb">
+                          <li><a href="/home/index.html"><i class="icon-home"></i>首页</a></li>
+                          <li><a href="#">我的录入</a></li>
+                          <li class="active">修改信息</li>
+                      </ul>
+                      <!--breadcrumbs end -->
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              	修改信息
+                          </header>
+                          <div class="panel-body">
+                              <form class="form-inline" role="form">
+                              <table class="form_table" style="border-collapse:separate; border-spacing:0px 5px;" id="">
+		                          <tbody>
+		                          <tr>
+		                          	  <th class="form_table_th">二级代理</th>
+		                          	  <td>
+                                         <select class="form-control m-bot15" name='agent_id' id = "agent_id">
+                                              <option>请选择</option>
+                                              {% for key,item in agentInfo %}
+                                              <option value = "{{item.id}}" {% if studentInfo.agent_id == item.id %}selected{%endif%} >{{item.name}}</option>
+                                              {% endfor %}
+                                         </select> 
+ 									  </td>
+		                          </tr>
+		                         <tr>
+		                          	  <th class="form_table_th">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</th>
+		                          	  <td>
+                                      <input type="text" class="form-control" placeholder="请输入学员姓名"id="name"  name = "name" value = "{{studentInfo.name}}">
+ 									  </td>
+		                          </tr>
+		                          <tr>
+		                          	  <th class="form_table_th">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</th>
+		                          	  <td>
+                                   			<label class="label_radio" for="radio-m">
+                                               <input name="gender" id="radio-m" value="m" type="radio" {% if studentInfo.gender == 'm' %}checked{%endif%} /> 男
+                                           </label>
+                                           <label class="label_radio" for="radio-f">
+                                               <input name="gender" id="radio-f" value="f" type="radio" {% if studentInfo.gender == 'f' %}checked{%endif%} />女
+                                           </label>
+ 									  </td>
+		                          </tr>
+		                          <tr>
+		                          	  <th class="form_table_th">联系电话</th>
+		                          	  <td>
+                                      <input type="text" class="form-control"  placeholder="请输入联系电话" id="phone" name = "phone" value = "{{studentInfo.phone}}">
+ 									  </td>
+		                          </tr>
+		                          <tr>
+		                          	  <th class="form_table_th">民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;族</th>
+		                          	  <td>
+                                      <input type="text" class="form-control"  id="ethnic" name="ethnic" value = "{{studentInfo.ethnic}}">
+ 									  </td>
+		                          </tr>
+		                          <tr>
+		                          	  <th class="form_table_th">身份证号</th>
+		                          	  <td>
+                                      <input type="text" class="form-control"  placeholder="请输入身份证号" id="ID_num"  name = "ID_num" value = "{{studentInfo.ID_num}}">
+ 									  </td>
+		                          </tr>
+								  <tr>
+		                          	  <th class="form_table_th">户&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;籍</th>
+		                          	  <td>
+		                          	  		<input type = "hidden" id = "pre_province" value = "{{studentInfo.province}}">
+		                          	  		<input type = "hidden" id = "pre_city" value = "{{studentInfo.city}}">
+		                          	  		<input type = "hidden" id = "pre_district" value = "{{studentInfo.district}}">
+		                          	  		<select name="province" id="province" class="form-control m-bot15">
+                                              <option>省份</option>
+                                         	</select>
+                                         	<select name="city" id="city" class="form-control m-bot15">
+                                              <option>地级市</option>
+                                         	</select>
+                                         	<select name="district" id="districtAndCounty" class="form-control m-bot15">
+                                              <option>区县</option>
+                                         	</select> 
+ 									  </td>
+		                          </tr>	
+		                          <tr>
+		                          	  <th class="form_table_th">确认点</th>
+		                          	  <td>
+		                          	  		<select name="confirm_id" id="confirm_id" class="form-control m-bot15">
+                                              <option>请选择</option>
+                                              {% for key,item in confirmInfo %}
+                                              	<option value="{{item.id}}" {% if studentInfo.confirm_id == item.id %}selected{%endif%}>{{item.confirm}}</option>
+                                              {% endfor %}
+                                         	</select>
+                        			  </td>
+		                          </tr>
+		                         <tr>
+		                          	  <th class="form_table_th">报考层次</th>
+		                          	  <td>
+		                          	  		<select class="form-control m-bot15" id = "arrange" name = "arrange">
+		                          	  			<option value = '0'>请选择</option>
+		                          	  			{% for key,item in arrangeInfo %}
+		                          	  			<option value = "{{item.id}}" {% if studentInfo.arrange_id == item.id %}selected{%endif%}>{{item.title}}</option>
+		                          	  			{% endfor %}
+		                          	  		</select>
+ 									  </td>
+		                          </tr>
+		                          <tr>
+		                          	  <th class="form_table_th">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;校</th>
+		                          	  <td>
+		                          	  		<select class="form-control m-bot15" id = "school" name = "school">
+		                          	  			<option value = '0'>请选择</option>
+		                          	  			{% for key,item in schoolInfo %}
+		                          	  			<option value = "{{item.id}}" {% if studentInfo.school_id == item.id %}selected{%endif%}>{{item.title}}</option>
+		                          	  			{% endfor %}
+		                          	  		</select>
+ 									  </td>
+		                          </tr>
+		                          <tr>
+		                          	  <th class="form_table_th">专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业</th>
+		                          	  <td>
+		                          	  		<select class="form-control m-bot15" id = "profess" name = "profess">
+		                          	  			<option value = '0'>请选择</option>
+		                          	  			{% for key,item in professInfo %}
+		                          	  			<option value = "{{item.id}}" {% if studentInfo.profess_id == item.id %}selected{%endif%}>{{item.title}}</option>
+		                          	  			{% endfor %}
+		                          	  		</select>
+ 									  </td>
+		                          </tr>
+		                          <tr>
+		                          	  <th class="form_table_th">报名费</th>
+		                          	  <td>
+                                      <input  disabled="disabled" type="text" class="form-control" value = "{{studentInfo.entryFee}}" placeholder="请输入金额" name = "entryFee" id="entryFee" >
+ 									  </td>
+		                          </tr>
+		                          
+		                          <tr>
+		                          	  <th class="form_table_th">应缴学费</th>
+		                          	  <td>
+                                      <input disabled="disabled" type="text" class="form-control" value = "{{studentInfo.fees}}" placeholder="请输入金额" name = "fees" id="fees" >
+ 									  </td>
+		                          </tr>
+		                         <tr>
+		                          	  <th class="form_table_th">缴费1:</th>
+		                          	  <td>
+		                          	  		{% if studentInfo.fees1 == 0 %}
+			                          	      <label class="label_radio" for="radio-01">
+	                                               <input name="fees1" id="radio-01" value="0" type="radio" checked />否
+	                                           </label>
+	                                           <label class="label_radio" for="radio-02">
+	                                               <input name="fees1" id="radio-02" value="1" type="radio" />是
+	                                           </label>
+                                            {%else%}
+                                            {{studentInfo.fees1}}
+                                            {%endif%}
+ 									  </td>
+		                          </tr>
+		                         <tr>
+		                          	  <th class="form_table_th">缴费2:</th>
+		                          	  <td>
+		                          	        {% if studentInfo.fees2 == 0 %}
+			                          	       <label class="label_radio" for="radio-03">
+	                                               <input name="fees2" id="radio-03" value="0" type="radio" checked /> 否
+	                                           </label>
+	                                           <label class="label_radio" for="radio-04">
+	                                               <input name="fees2" id="radio-04" value="1" type="radio" />是
+	                                           </label>
+                                            {%else%}
+                                            {{studentInfo.fees2}}
+                                            {%endif%}
+		                          	  	
+ 									  </td>
+		                          </tr>
+		                          <tr>
+		                          	  <th class="form_table_th">合计缴费:</th>
+		                          	  <td>
+		                          	  	{{studentInfo.all_fees}}
+ 									  </td>
+		                          </tr>
+		                          <tr>
+		                          	  <th class="form_table_th">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</th>
+		                          	  <td>
+		                          	  <textarea rows="3" cols="20" class="form-control" name = "extra" id="extra"  placeholder="">{{studentInfo.extra}}</textarea >
+ 									  </td>
+		                          </tr>
+								  <tr style="border:none;">
+									<td style="text-align:center;" colspan="2">
+									<input type = "hidden" value = "{{studentInfo.id}}" id = "student_id" name = "student_id">
+                                  <button type="button" class="btn btn-shadow btn-primary">修改</button>
+                                  <button type="button" class="btn btn-shadow btn-default" onclick="javascript:window.location.href='/student/lists.html'">取消</button>								
+									</td>
+								  </tr>
+		                          </tbody>
+		                          </table>
+                              </form>
+                          </div>
+                      </section>
+                  </div>
+              </div>
+
+              <!-- page end-->
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+{%include "foot.html"%}  
+<!-- script for city -->
+<script src = "{{_cfg_.site.static_base}}/js/city.js"></script>
+<script type="text/javascript">
+
+//select 联动 根据层次获取学校
+$("#arrange").change(function(){
+	var  arrange = $(this).val();
+	$.ajax({
+		url: '/operation/schoolInfo.json',
+		method: 'POST',
+		data:{arrange:arrange},  
+		success: function(re){
+			//移除专业与学费
+			$("#profess").find('option').remove();
+			$("#profess").append("<option>请选择</option>");
+			$("#fees").val('');
+			
+			$("#school").find('option').remove();
+			$("#school").append("<option>请选择</option>");
+		    $.each(re.data,function(name,value) {
+				$("#school").append("<option value='"+value['id']+"'>"+value['title']+"</option>"); 
+	        });			
+		}
+	});
+});
+//select 联动 根据学校获取专业
+$("#school").change(function(){
+	var  school = $(this).val();
+	$.ajax({
+		url: '/operation/professInfo.json',
+		method: 'POST',
+		data:{school:school},  
+		success: function(re){
+			$("#profess").find('option').remove();
+			$("#profess").append("<option>请选择</option>");
+			$("#fees").val('');
+		    $.each(re.data,function(name,value) {
+				$("#profess").append("<option value='"+value['id']+"'>"+value['title']+"</option>"); 
+	        });			
+		}
+	});
+});
+
+//select 联动 根据专业获取学费
+$("#profess").change(function(){
+	var  profess = $(this).val();
+	$.ajax({
+		url: '/operation/feesInfo.json',
+		method: 'POST',
+		data:{profess:profess},  
+		success: function(re){
+			$("#fees").val(re.data);
+		}
+	});
+});
+
+//提交按钮
+$('.btn-primary').click(function(){
+	var student_id = $("#student_id").val();
+	var agent_id = $("#agent_id").val();
+	var name = $("#name").val();
+	var gender = $("input[type='radio']:checked").val();
+	var phone = $("#phone").val();
+	var ethnic = $("#ethnic").val();
+	var ID_num = $("#ID_num").val();
+	var province = $("#province").find("option:selected").text();
+	var city = $("#city").find("option:selected").text();
+	var district = $("#districtAndCounty").find("option:selected").text();
+	var confirm_id = $("#confirm_id").val();
+	var extra = $("#extra").val();
+	var fees1 = $("input[name='fees1']:checked").val();
+	var fees2 = $("input[name='fees2']:checked").val();
+	var arrange = $("#arrange").val();
+	var professType = $("#professType").val();
+	var school = $("#school").val();
+	var profess = $("#profess").val();
+	var entryFee = $("#entryFee").val();
+	var fees = $("#fees").val();
+	
+	var update_data = {
+			student_id:student_id,
+			agent_id:agent_id,
+			name:name,
+			gender:gender,
+			phone:phone,
+			ethnic:ethnic,
+			ID_num:ID_num,
+			province:province,
+			city:city,
+			district:district,
+			confirm_id:confirm_id,
+			extra:extra,
+			arrange:arrange,
+			professType:professType,
+			school:school,
+			profess:profess,
+			entryFee:entryFee,
+			fees:fees,
+			fees1:fees1,
+			fees2:fees2
+	}
+	$.ajax({
+		url: '/student/modify.json',
+		method: 'POST',
+		data:update_data,  
+		success: function(re){
+			if(re.error_code > 0){
+				alert(re.error_msg);
+				return false;
+			}
+			else{
+				location.href = "/student/lists.html";
+			}			
+		}
+	});
+});
+$("#radio-02").click(function(){
+	var fees  = $("#fees").val();
+	var fees1 = fees * 0.4;
+	var str = '确认缴费1为  '+fees + ' * 40% = '+fees1;
+	alert(str);
+});
+$("#radio-04").click(function(){
+	var fees  = $("#fees").val();
+	var fees2 = fees * 0.6;
+	var radstr = '确认缴费2为  '+fees + ' * 60% = '+fees2;
+	alert(radstr);
+}); 
+</script>
+{%endblock%}

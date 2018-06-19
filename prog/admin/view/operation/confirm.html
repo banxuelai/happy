@@ -1,0 +1,144 @@
+{% extends 'head.html' %}
+{% block head%}
+    <title>{{_cfg_.site.title}}</title>
+{%endblock%}
+{%block body%}
+  <section id="container" class="">
+      <!--header start-->
+      {%include "head_nav.html"%}
+      <!--header end-->
+      <!--sidebar start-->
+      <!--sidebar end-->
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+              <!-- page start-->
+              <div class="row">
+                  <div class="col-lg-12">
+                      <!--breadcrumbs start -->
+                      <ul class="breadcrumb">
+                          <li><a href="/home/index.html"><i class="icon-home"></i>首页</a></li>
+                          <li><a href="#">配置管理</a></li>
+                          <li class="active">信息确认点</li>
+                      </ul>
+                      <!--breadcrumbs end -->
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              	信息确认点
+                          </header>
+                          <div class="panel-body">
+                              <form class="form-inline" role="form">
+                              <table class="form_table" style="border-collapse:separate; border-spacing:0px 5px;" id="">
+		                          <tbody>
+								  <tr>
+		                          	  <td>
+		                          	  		<select name="province" id="province" class="form-control m-bot15">
+                                              <option>省份</option>
+                                         	</select>
+                                         	<select name="city" id="city" class="form-control m-bot15">
+                                              <option>地级市</option>
+                                         	</select>
+                                         	<select name="district" id="districtAndCounty" class="form-control m-bot15">
+                                              <option>区县</option>
+                                         	</select> 
+ 									  </td>
+		                          </tr>	
+								  <tr style="border:none;">
+									<td style="text-align:center;" colspan="2">
+                                  <button type="button" class="btn btn-round btn-primary">保存</button>
+									</td>
+								  </tr>
+		                          </tbody>
+		                          </table>
+                              </form>
+
+                          </div>
+                          
+                          <table class="table table-striped border-top" id="sample_1">
+                          <thead>
+                          <tr>
+                              <th>确认点</th>
+                              <th>操作</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          {% for key,item in lists %} 
+                          
+                          <tr class="odd gradeX">
+                          		<input type="hidden" class = "id" name ="id" value = "{{item.id}}">
+                              <td>{{item.province}}{{item.city}}{{item.district}}</td>
+                              <td>
+                                      <button class="btn btn-danger btn-xs"><i class="icon-trash "></i></button>
+                              </td> 
+                          </tr>
+                         {% endfor %}
+                             </tbody>
+                          </table>
+                      </section>
+                  </div>
+              </div>
+              <!-- page end-->
+          </section>
+      </section>
+      <!--main content end-->
+      <!--pagination start-->
+           <section class="page">
+           	{{pages | raw}}
+	       </section>
+	      <!--pagination end-->
+  </section>
+{%include "foot.html"%}
+<!-- script for city -->
+<script src = "{{_cfg_.site.static_base}}/js/confirm_city.js"></script>
+<script type="text/javascript">
+//提交按钮
+$('.btn-primary').click(function(){
+	
+	var province = $("#province").find("option:selected").text();
+	var city = $("#city").find("option:selected").text();
+	var district = $("#districtAndCounty").find("option:selected").text();
+	
+	$.ajax({
+		url: '/operation/confirm.json',
+		method: 'POST',
+		data:{province:province,city:city,district:district},  
+		success: function(re){
+			if(re.error_code > 0){
+				alert(re.error_msg);
+				return false;
+			}
+			else{
+				location.href = "/operation/confirm.html";
+			}			
+		}
+	});
+});
+//提交按钮
+$('.btn-danger').click(function(){
+	
+    event.preventDefault();
+    var del_info  = confirm('你确定要删除吗？');
+    var  id = $(this).parents('tr').find('.id').val();
+    if(del_info){
+    	$.ajax({
+    		url: '/operation/delConfirm.json',
+    		method: 'POST',
+    		data:{id:id},  
+    		success: function(re){
+				if (re.error_code == 0) {
+					alert('删除成功');
+					window.location.reload();
+				} else {
+					alert(re.error_msg);
+				}		
+    		}
+    	});
+    }
+
+});
+</script>
+{%endblock%}

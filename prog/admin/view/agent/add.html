@@ -1,0 +1,96 @@
+{% extends 'head.html' %}
+{% block head%}
+    <title>{{_cfg_.site.title}}</title>
+{%endblock%}
+{%block body%}
+  <section id="container" class="">
+      <!--header start-->
+      {%include "head_nav.html"%}
+      <!--header end-->
+      <!--sidebar start-->
+      <!--sidebar end-->
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+              <!-- page start-->
+              <div class="row">
+                  <div class="col-lg-12">
+                      <!--breadcrumbs start -->
+                      <ul class="breadcrumb">
+                          <li><a href="/home/index.html"><i class="icon-home"></i>首页</a></li>
+                          <li><a href="#">二级代理</a></li>
+                          <li class="active">添加代理</li>
+                      </ul>
+                      <!--breadcrumbs end -->
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              	添加代理
+                          </header>
+                          <div class="panel-body">
+                              <form class="form-inline">
+                              <table class="form_table" style="border-collapse:separate; border-spacing:0px 5px;" id="">
+		                          <tbody>
+		                         <tr>
+		                          	  <th class="form_table_th">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</th>
+		                          	  <td>
+                                      <input type="text" class="form-control" id="name" name="name" placeholder="请输入姓名"id="" >
+ 									  </td>
+		                          </tr>
+		                          
+		                          <tr>
+		                          	  <th class="form_table_th">联系电话</th>
+		                          	  <td>
+                                      <input type="text" class="form-control"  name = "phone" id = "phone" placeholder="请输入联系电话" id="" >
+ 									  </td>
+		                          </tr>
+		                          		                       
+								  <tr style="border:none;">
+									<td style="text-align:center;" colspan="2">
+                                  <button type="button" class="btn btn-shadow btn-primary">保存</button>
+                                  <button type="button" class="btn btn-shadow btn-default" onclick="javascript:window.location.href='/agent/lists.html'">取消</button>								
+									</td>
+								  </tr>
+		                          </tbody>
+		                          </table>
+                              </form>
+
+                          </div>
+                      </section>
+
+                  </div>
+              </div>
+
+              <!-- page end-->
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+{%include "foot.html"%}
+<script type="text/javascript">
+//提交按钮
+$('.btn-primary').click(function(){
+	
+	var name = $("#name").val();
+	var phone = $("#phone").val();
+	
+	$.ajax({
+		url: '/agent/add.json',
+		method: 'POST',
+		data:{name:name,phone:phone},  
+		success: function(re){
+			if(re.error_code > 0){
+				alert(re.error_msg);
+				return false;
+			}
+			else{
+				location.href = "/agent/lists.html";
+			}			
+		}
+	});
+});
+</script>
+{%endblock%}
