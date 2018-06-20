@@ -7,18 +7,18 @@
 return array(
     'default' => array(
         'master' => array(
-            'host' => '47.104.93.177',
-            'user' => 'aducode',
+            'host' => '127.0.0.1',
+            'user' => 'root',
             'password' => 'B5aRAFw2Bine96Eh',
-            'dbname' => 'aducode',
+            'dbname' => 'happy_project',
             'charset' => 'utf8mb4', //支持emoji表情
             'port' => 3306,
         ),
         'slave' => array(
-            'host' => '193.112.73.122',
-            'user' => 'aducode',
+            'host' => '127.0.0.1',
+            'user' => 'root',
             'password' => 'B5aRAFw2Bine96Eh',
-            'dbname' => 'aducode',
+            'dbname' => 'happy_project',
             'charset' => 'utf8mb4', //支持emoji表情
             'port' => 3306,
         ),

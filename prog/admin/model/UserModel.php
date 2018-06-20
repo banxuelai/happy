@@ -2,7 +2,7 @@
 /**
  * 用户相关
  * @author bxl@gmail.com
- * @date 2017-12-25
+ * @date 2018-06-20
  *
  */
 class UserModel extends Model
@@ -12,7 +12,7 @@ class UserModel extends Model
     {
         parent::__construct();
         $this->db = Db::mysql(Config::mysql('default'));
-        $this->table = 'user';
+        $this->table = 'user_info';
     }
     
     //获取列表
@@ -23,7 +23,7 @@ class UserModel extends Model
         $where_str = $this->getWhereStr($cond);
         $from_str = " FROM `{$this->table}` $where_str ";
         $count_sql = "SELECT count(*) $from_str ";
-        $sql = " SELECT id,name,nickname,type,phone  $from_str order by nickname asc  ";
+        $sql = " SELECT user_id,name,nickname,user_type,phone  $from_str order by nickname asc  ";
         if ($offset >= 0 && $limit > 0) {
             $sql .= " LIMIT $offset, $limit ";
         }
