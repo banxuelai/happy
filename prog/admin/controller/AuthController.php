@@ -59,7 +59,7 @@ class AuthController extends Controller
     //获取用户信息
     protected function getUserInfo()
     {
-            return Session::get('happy');
+    	return Session::get('happy');
     }
     
     protected function logAdminAction($log_str)

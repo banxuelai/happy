@@ -22,7 +22,7 @@ class AdminController extends Controller
             $user_info = $this->checkLogin($nickname, $password);
             session_regenerate_id(true);
             
-            Session::set('aducode', 
+            Session::set('happy', 
             	array(
             		'login_time' => time(),
             		'active_time' => ($remember == 'remember') ? (time() + 86400) : time(),
