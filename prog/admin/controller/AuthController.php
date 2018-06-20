@@ -31,35 +31,35 @@ class AuthController extends Controller
     //获取登录用户名
     protected function getUserName()
     {
-        $aducode = Session::get('aducode');
+        $aducode = Session::get('happy');
         return is_array($aducode) && isset($aducode['nickname']) ? $aducode['nickname'] : null;
     }
     
     //获取实名
     protected function getName()
     {
-        $aducode = Session::get('aducode');
-        return is_array($aducode) && isset($aducode['name']) ? $aducode['name'] : null;
+        $aducode = Session::get('happy');
+        return is_array($aducode) && isset($aducode['user_name']) ? $aducode['user_name'] : null;
     }
     
     //获取uid
     protected function getUidbySess()
     {
-        $aducode = Session::get('aducode');
-        return is_array($aducode) && isset($aducode['id']) ? $aducode['id'] : null;
+        $aducode = Session::get('happy');
+        return is_array($aducode) && isset($aducode['user_id']) ? $aducode['user_id'] : null;
     }
     
     //获取type
     protected function getTypebyUid($uid = 0)
     {
-        $aducode = Session::get('aducode');
-        return is_array($aducode) && isset($aducode['type']) ? $aducode['type'] : null;
+        $aducode = Session::get('happy');
+        return is_array($aducode) && isset($aducode['user_type']) ? $aducode['user_type'] : null;
     }
     
     //获取用户信息
     protected function getUserInfo()
     {
-            return Session::get('aducode');
+            return Session::get('happy');
     }
     
     protected function logAdminAction($log_str)

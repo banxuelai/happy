@@ -13,7 +13,7 @@ class HomeController extends AuthController
                 'title' => '首页 ',
                 'nickname' => $this->getUserName(),
                 'type' => $this->getTypebyUid(),
-                'name' => $this->getName(),
+                'user_name' => $this->getName(),
                 'menu' => 'home',
         ));
     }
