@@ -21,13 +21,18 @@ class AdminController extends Controller
             
             $user_info = $this->checkLogin($nickname, $password);
             session_regenerate_id(true);
-            Session::set('aducode', array(
-            'login_time' => time(),
-            'active_time' => ($remember == 'remember') ? (time() + 86400) : time(),
-            'nickname' => $nickname,
-            'name' => $user_info['name'],
-            'user_type' => $user_info['user_type'],
-            'user_id' => $user_info['user_id']));
+            
+            Session::set('aducode', 
+            	array(
+            		'login_time' => time(),
+            		'active_time' => ($remember == 'remember') ? (time() + 86400) : time(),
+            		'nickname' => $nickname,
+            		'name' => $user_info['name'],
+            		'user_type' => $user_info['user_type'],
+            		'user_id' => $user_info['user_id']
+            	)
+            );
+            
             $data = array(
                 'last_login_ip' => $this->req->client_ip,
                 'last_login_time' => time(),
@@ -35,7 +40,7 @@ class AdminController extends Controller
             $user_model->updateOne($data, array('nickname' => $nickname));
             $this->success($back_url);
         }
-        //清除session
+        # 清除session
         Session::set('happy', '');
         session_destroy();
         $this->display('admin/login.html', array(
