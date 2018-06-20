@@ -27,7 +27,7 @@ class AdminController extends Controller
             		'login_time' => time(),
             		'active_time' => ($remember == 'remember') ? (time() + 86400) : time(),
             		'nickname' => $nickname,
-            		'name' => $user_info['name'],
+            		'user_name' => $user_info['user_name'],
             		'user_type' => $user_info['user_type'],
             		'user_id' => $user_info['user_id']
             	)
