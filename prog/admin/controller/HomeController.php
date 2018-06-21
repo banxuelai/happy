@@ -7,6 +7,11 @@
  */
 class HomeController extends AuthController
 {
+	/**
+	 * 首页
+	 * @author bxl@gmail.com
+	 * @date 2018/06/21
+	 */
     public function index()
     {
         $this->display('home/index.html', array(
