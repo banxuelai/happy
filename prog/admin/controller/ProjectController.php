@@ -7,6 +7,10 @@
  */
 class ProjectController extends AuthController
 {
+	private $sourceConfig = array(
+		'shixian', //实现网
+		'codemart', //码市	
+	);
 	/**
 	 * @desc 项目列表
 	 * @author bxl@gmail.com
@@ -76,6 +80,7 @@ class ProjectController extends AuthController
 				'menu' => 'project',
 				'sub' => 'add',
 				'type' => $this->getTypebyUid(),
+				'source_config' => $this->sourceConfig,
 		));
 	}
 	
@@ -87,6 +92,14 @@ class ProjectController extends AuthController
 	 */
 	public function del()
 	{
+		$projectId = intval($this->req->post('project_id'));
 		
+		$project_model = new ProjectModel();
+		
+		$updateId = $project_model->updateOne(array('status' => -1,'update_time' => time()), array('project_id' => $projectId));
+		
+		if ($updateId) {
+			$this->success();
+		}
 	}
 }

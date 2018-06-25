@@ -39,8 +39,8 @@
 		                          	  <td>
                                          <select class="form-control m-bot15" name='agent_id' id = "agent_id">
                                               <option>请选择</option>
-                                              {% for key,item in agentInfo %}
-                                              <option value = "{{item.id}}">{{item.name}}</option>
+                                              {% for key,item in source_config %}
+                                              <option value = "{{item}}">{{item}}</option>
                                               {% endfor %}
                                          </select> 
  									  </td>
