@@ -48,11 +48,7 @@ class ProjectController extends AuthController
 	public function add() 
 	{
 		$project_model = new ProjectModel();
-		
-		$projectId = intval($this->req->gpc('project_id'));
-		
-		$projectRow = $project_model->getRow(array('status' => 1,'user_id' => $projectId));
-		
+			
 		if ($this->req->method == 'POST') {
 			$projectTitle = trim($this->req->post('project_title'));
 			$projectFees = $this->req->post('project_fees');
@@ -77,7 +73,6 @@ class ProjectController extends AuthController
 		$this->display('project/add.html', array(
 				'title' => '添加项目',
 				'nickname' => $this->getUserName(),
-				'project_row' => $projectRow,
 				'menu' => 'project',
 				'sub' => 'add',
 				'type' => $this->getTypebyUid(),
