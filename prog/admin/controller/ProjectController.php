@@ -32,7 +32,7 @@ class ProjectController extends AuthController
 		
 		$re = $project_model->getList($cond, $offset, $page_size);
 		
-		$pageHtml = $this->createPageHtml($this->buildUrl("student/lists.html", $this->req->get()), $re['count'], $page, $page_size);
+		$pageHtml = $this->createPageHtml($this->buildUrl("project/lists.html", $this->req->get()), $re['count'], $page, $page_size);
 		
 		$this->display('project/lists.html', array(
 				'title' => '项目列表',

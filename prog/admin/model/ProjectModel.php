@@ -23,7 +23,7 @@ class ProjectModel extends Model
         $where_str = $this->getWhereStr($cond);
         $from_str = " FROM `{$this->table}` $where_str ";
         $count_sql = "SELECT count(*) $from_str ";
-        $sql = " SELECT *  $from_str order by id asc  ";
+        $sql = " SELECT *  $from_str order by project_id desc  ";
         if ($offset >= 0 && $limit > 0) {
             $sql .= " LIMIT $offset, $limit ";
         }
