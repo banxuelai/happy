@@ -37,7 +37,7 @@
 		                          <tr>
 		                          	  <th class="form_table_th">项目来源</th>
 		                          	  <td>
-                                         <select class="form-control m-bot15" name='agent_id' id = "agent_id">
+                                         <select class="form-control m-bot15" name='project_source' id = "project_source">
                                               <option>请选择</option>
                                               {% for key,item in source_config %}
                                               <option value = "{{item}}">{{item}}</option>
@@ -96,96 +96,25 @@
   </section>
 {%include "foot.html"%}  
 <!-- script for city -->
-<script src = "{{_cfg_.site.static_base}}/js/city.js"></script>
 <script type="text/javascript">
-
-//select 联动 根据层次获取学校
-$("#arrange").change(function(){
-	var  arrange = $(this).val();
-	$.ajax({
-		url: '/operation/schoolInfo.json',
-		method: 'POST',
-		data:{arrange:arrange},  
-		success: function(re){
-			$("#school").find('option').remove();
-			$("#school").append("<option>请选择</option>");
-		    $.each(re.data,function(name,value) {
-				$("#school").append("<option value='"+value['id']+"'>"+value['title']+"</option>"); 
-	        });			
-		}
-	});
-});
-//select 联动 根据学校获取专业
-$("#school").change(function(){
-	var  school = $(this).val();
-	$.ajax({
-		url: '/operation/professInfo.json',
-		method: 'POST',
-		data:{school:school},  
-		success: function(re){
-			$("#profess").find('option').remove();
-			$("#profess").append("<option>请选择</option>");
-		    $.each(re.data,function(name,value) {
-				$("#profess").append("<option value='"+value['id']+"'>"+value['title']+"</option>"); 
-	        });			
-		}
-	});
-});
-
-//select 联动 根据专业获取学费
-$("#profess").change(function(){
-	var  profess = $(this).val();
-	$.ajax({
-		url: '/operation/feesInfo.json',
-		method: 'POST',
-		data:{profess:profess},  
-		success: function(re){
-			$("#fees").val(re.data);
-		}
-	});
-});
 
 //提交按钮
 $('.btn-primary').click(function(){
-	var agent_id = $("#agent_id").val();
-	var name = $("#name").val();
-	var gender = $("input[type='radio']:checked").val();
-	var phone = $("#phone").val();
-	var ethnic = $("#ethnic").val();
-	var ID_num = $("#ID_num").val();
-	var province = $("#province").find("option:selected").text();
-	var city = $("#city").find("option:selected").text();
-	var district = $("#districtAndCounty").find("option:selected").text();
-	var confirm_id = $("#confirm_id").val();
-	var arrange = $("#arrange").val();
-	var professType = $("#professType").val();
-	var school = $("#school").val();
-	var profess = $("#profess").val();
-	var entryFee = $("#entryFee").val();
-	var fees = $("#fees").val();
-	var extra = $("#extra").val();
+	var project_source = $('#project_source').val();
+	var project_title = $('#project_title').val();
+	var project_url = $('#project_url').val();
+	var project_fees = $('#project_fees').val();
+	var project_time = $('#project_time').val();
 	
 	var adddata = {
-			agent_id:agent_id,
-			name:name,
-			gender:gender,
-			phone:phone,
-			ethnic:ethnic,
-			ID_num:ID_num,
-			province:province,
-			city:city,
-			district:district,
-			confirm_id:confirm_id,
-			arrange:arrange,
-			professType:professType,
-			school:school,
-			profess:profess,
-			entryFee:entryFee,
-			fees:fees,
-			extra:extra
+			project_source:project_source,
+			project_title:project_title,
+			project_url:project_url,
+			project_fees:project_fees,
+			project_time:project_time,
 	}
 	$.ajax({
-		url: '/student/add.json',
+		url: '/project/add.json',
 		method: 'POST',
 		data:adddata,  
 		success: function(re){
@@ -194,7 +123,7 @@ $('.btn-primary').click(function(){
 				return false;
 			}
 			else{
-				location.href = "/student/lists.html";
+				location.href = "/project/lists.html";
 			}			
 		}
 	});

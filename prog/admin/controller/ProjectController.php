@@ -8,8 +8,8 @@
 class ProjectController extends AuthController
 {
 	private $sourceConfig = array(
-		'shixian', //实现网
-		'codemart', //码市	
+		'shixian'  => '实现网',//实现网
+		'codemart' => '码市', //码市	
 	);
 	/**
 	 * @desc 项目列表
