@@ -63,77 +63,7 @@
                                       <input type="text" class="form-control" placeholder="请输入项目估时"  id="project_time" name="project_time" >
  									  </td>
 		                          </tr>
-		                          <tr>
-		                          	  <th class="form_table_th">身份证号</th>
-		                          	  <td>
-                                      <input type="text" class="form-control"  placeholder="请输入身份证号" id="ID_num"  name = "ID_num">
- 									  </td>
-		                          </tr>
-								  <tr>
-		                          	  <th class="form_table_th">户&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;籍</th>
-		                          	  <td>
-		                          	  		<select name="province" id="province" class="form-control m-bot15">
-                                              <option>省份</option>
-                                         	</select>
-                                         	<select name="city" id="city" class="form-control m-bot15">
-                                              <option>地级市</option>
-                                         	</select>
-                                         	<select name="district" id="districtAndCounty" class="form-control m-bot15">
-                                              <option>区县</option>
-                                         	</select> 
- 									  </td>
-		                          </tr>	
-		                          <tr>
-		                          	  <th class="form_table_th">确认点</th>
-		                          	  <td>
-		                          	  		<select name="confirm_id" id="confirm_id" class="form-control m-bot15">
-                                              <option>请选择</option>
-                                              {% for key,item in confirmInfo %}
-                                              	<option value="{{item.id}}">{{item.confirm}}</option>
-                                              {% endfor %}
-                                         	</select>
-                        			  </td>
-		                          </tr>
-		                          <tr>
-		                          	  <th class="form_table_th">报考层次</th>
-		                          	  <td>
-		                          	  		<select class="form-control m-bot15" id = "arrange" name = "arrange">
-		                          	  			<option value = '0'>请选择</option>
-		                          	  			{% for key,item in arrangeInfo %}
-		                          	  			<option value = "{{item.id}}">{{item.title}}</option>
-		                          	  			{% endfor %}
-		                          	  		</select>
- 									  </td>
-		                          </tr>
-		                           <tr>
-		                          	  <th class="form_table_th">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;校</th>
-		                          	  <td>
-                                         <select class="form-control m-bot15" name = "school" id = "school">
-                                              <option>请选择</option>
-                                         </select> 
- 									  </td>
-		                          </tr>
-		                           <tr>
-		                          	  <th class="form_table_th">专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业</th>
-		                          	  <td>
-                                         <select class="form-control m-bot15" name = "profess" id = "profess">
-                                              <option>请选择</option>
-                                         </select> 
- 									  </td>
-		                          </tr>
-		                          <tr>
-		                          	  <th class="form_table_th">报名费</th>
-		                          	  <td>
-                                      <input  disabled="disabled" type="text" class="form-control" value = "300" placeholder="请输入金额" name = "entryFee" id="entryFee" >
- 									  </td>
-		                          </tr>
-		                          
-		                          <tr>
-		                          	  <th class="form_table_th">应缴学费</th>
-		                          	  <td>
-                                      <input disabled="disabled" type="text" class="form-control"  placeholder="请输入金额" name = "fees" id="fees" >
- 									  </td>
-		                          </tr>
+
 		                          <tr>
 		                          	  <th class="form_table_th">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</th>
 		                          	  <td>

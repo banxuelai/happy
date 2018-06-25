@@ -35,7 +35,7 @@ class ProjectController extends AuthController
 				'pages' => $pageHtml,
 				'lists' => $re['rows'],
 				'user_type' => $this->getTypebyUid(),
-				'menu' => 'student',
+				'menu' => 'project',
 				'sub' => 'lists',
 		));		
 	}
@@ -47,7 +47,41 @@ class ProjectController extends AuthController
 	 */
 	public function add() 
 	{
+		$project_model = new ProjectModel();
 		
+		$projectId = intval($this->req->gpc('project_id'));
+		
+		$projectRow = $project_model->getRow(array('status' => 1,'user_id' => $projectId));
+		
+		if ($this->req->method == 'POST') {
+			$projectTitle = trim($this->req->post('project_title'));
+			$projectFees = $this->req->post('project_fees');
+			$projectTime = $this->req->post('project_time');
+			$projectSummary = $this->req->post('project_summary');
+			$projectSource = $this->req->post('project_source');
+			$projectUrl = $this->req->post('project_url');
+			
+			$insertData = array(
+				'project_title' => $projectTitle,
+				'project_fees' => $projectFees,
+				'project_time' => $projectTime,
+				'project_summary' => $projectSummary,
+				'project_source' => $projectSource,
+				'project_url' => $projectUrl,
+				'create_time' => time(),					
+			);
+			
+			$project_model->insertOne($insertData);
+			$this->success();
+		}
+		$this->display('project/add.html', array(
+				'title' => '添加项目',
+				'nickname' => $this->getUserName(),
+				'project_row' => $projectRow,
+				'menu' => 'project',
+				'sub' => 'add',
+				'type' => $this->getTypebyUid(),
+		));
 	}
 	
 

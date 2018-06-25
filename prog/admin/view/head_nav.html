@@ -3,7 +3,7 @@
               <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
           </div>
           <!--logo start-->
-          <a href="#" class="logo" >智博继续教育<span></span></a>
+          <a href="#" class="logo" >乐活网管理后台<span></span></a>
           <!--logo end-->
           <div class="top-nav ">
               <ul class="nav pull-right top-menu">
@@ -31,7 +31,7 @@
                           <span>首页</span>
                       </a>
                   </li>
-                   {% if type == 1 %}
+<!--                    {% if type == 1 %}
                   <li class="sub-menu {% if menu =='user' %}active{% else %}{% endif %}">
                       <a href="javascript:;" class="">
                           <i class="icon-tasks"></i>
@@ -44,45 +44,18 @@
                           <li class="{% if sub =='reset' %}active{% else %}{% endif %}"><a class="" href="/user/reset.html">重置密码</a></li>
                       </ul>
                   </li>
-                  {% endif %}
-                  <li class="sub-menu {% if menu =='agent' %}active{% else %}{% endif %}">
-                      <a href="javascript:;" class="">
-                          <i class="icon-cogs"></i>
-                          <span>二级代理</span>
-                          <span class="arrow"></span>
-                      </a>
-                      <ul class="sub">
-                          <li class = "{% if sub =='lists' %}active{% else %}{% endif %}"><a class="" href="/agent/lists.html">我的代理</a></li>
-                          <li class = "{% if sub =='add' %}active{% else %}{% endif %}"><a class="" href="/agent/add.html">添加代理</a></li>
-                      </ul>
-                  </li>
-                  <li class="sub-menu {% if menu =='student' %}active{% else %}{% endif %}">
+                  {% endif %} -->
+                  <li class="sub-menu {% if menu =='project' %}active{% else %}{% endif %}">
                       <a href="javascript:;" class="">
                           <i class="icon-th"></i>
-                          <span>我的录入</span>
+                          <span>项目管理</span>
                           <span class="arrow"></span>
                       </a>
                       <ul class="sub">
-                      	  <li class="{% if sub =='lists' %}active{% else %}{% endif %}"><a class="" href="/student/lists.html">信息列表</a></li>
-                          <li class="{% if sub =='add' %}active{% else %}{% endif %}"><a class="" href="/student/add.html">录入信息</a></li>
+                      	  <li class="{% if sub =='lists' %}active{% else %}{% endif %}"><a class="" href="/project/lists.html">项目列表</a></li>
+                          <li class="{% if sub =='add' %}active{% else %}{% endif %}"><a class="" href="/project/add.html">添加项目</a></li>
                       </ul>
                   </li>
-                  {% if type == 1 %}
-                  <li class="sub-menu {% if menu =='operation' %}active{% else %}{% endif %}">
-                      <a href="javascript:;" class="">
-                          <i class="icon-glass"></i>
-                          <span>配置管理</span>
-                          <span class="arrow"></span>
-                      </a>
-                      <ul class="sub">
-                          <li class = "{% if sub =='confirm' %}active{% else %}{% endif %}"><a href="/operation/confirm.html">确认信息点</a></li>
-                          <li class = "{% if sub =='arrange' %}active{% else %}{% endif %}"><a href="/operation/arrange.html">报考层次</a></li>
-                          <li class = "{% if sub =='professType' %}active{% else %}{% endif %}"><a href="/operation/professType.html">专业类别</a></li>
-                          <li class = "{% if sub =='school' %}active{% else %}{% endif %}"><a href="/operation/school.html">学校配置</a></li>
-                          <li class = "{% if sub =='profess' %}active{% else %}{% endif %}"><a href="/operation/profess.html">专业配置</a></li>
-                      </ul>
-                  </li>
-                   {% endif %} 
                   <li class="sub-menu {% if menu =='me' %}active{% else %}{% endif %}">
                       <a class="" href="/user/modify.html">
                           <i class="icon-user"></i>
