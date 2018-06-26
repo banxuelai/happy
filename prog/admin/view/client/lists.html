@@ -1,0 +1,81 @@
+{% extends 'head.html' %}
+{% block head%}
+    <title>{{_cfg_.site.title}}</title>
+{%endblock%}
+{%block body%}
+  <section id="container" class="">
+      <!--header start-->
+      {%include "head_nav.html"%}
+      <!--header end-->
+      <!--sidebar start-->
+      <!--sidebar end-->
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+              <!-- page start-->
+              <div class="row">
+                  <div class="col-lg-12">
+                      <!--breadcrumbs start -->
+                      <ul class="breadcrumb">
+                          <li><a href="/home/index.html"><i class="icon-home"></i>首页</a></li>
+                          <li><a href="#">我的录入</a></li>
+                          <li class="active">录入信息</li>
+                      </ul>
+                      <!--breadcrumbs end -->
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              	 {{studentInfo.name}} 的详细信息
+                          </header>
+                          
+                          <div class="panel-body">
+                              <form class="form-inline" role="form">
+                              <table class="form_table" style="border-collapse:separate; border-spacing:0px 5px;" id="">
+		                          <tbody>
+		                           {% for key,item in project_list %}
+		                          <tr>
+<!-- 		                          	  <th class="form_table_th">预算:</th>
+ -->		                          	  <td>
+											<a href = '{{item.project_url}}'>{{item.project_title}}</a>
+ 									  </td>
+		                          </tr>
+		                          <tr>
+		                          	  <th class="form_table_th">预算:</th>
+		                          	  <td>
+											{{item.project_fees}} 元
+ 									  </td>
+		                          </tr>
+		                         <tr>
+		                          	  <th class="form_table_th">工期:</th>
+		                          	  <td>
+		                          	  {{item.project_time}} 天
+ 									  </td>
+		                          </tr>
+		                          <tr>
+<!-- 		                          	  <th class="form_table_th">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:</th>
+ -->		                          	  <td>
+											{{item.project_summary}}
+ 									  </td>
+		                          </tr>
+		                          {% endfor %}
+		                          </tbody>
+		                          </table>
+                              </form>
+                          </div>
+                      </section>
+                  </div>
+              </div>
+
+              <!-- page end-->
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+{%include "foot.html"%}  
+
+<script type="text/javascript">
+</script>
+{%endblock%}
