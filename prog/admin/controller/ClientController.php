@@ -22,7 +22,7 @@ class ClientController extends Controller
 		$projectList = $project_model->getList($cond,-1);
 		
 		$this->display('client/lists.html', array(
-			'project_list' => $projectList,
+			'project_list' => $projectList['rows'],
 		));
 	}
 }
