@@ -57,7 +57,7 @@ class ProjectController extends AuthController
 			$projectTitle = trim($this->req->post('project_title'));
 			$projectFees = $this->req->post('project_fees');
 			$projectTime = $this->req->post('project_time');
-			$projectSummary = $this->req->post('project_summary');
+			$projectSummary = htmlspecialchars(trim($this->req->post('project_summary')));
 			$projectSource = $this->req->post('project_source');
 			$projectUrl = $this->req->post('project_url');
 			
