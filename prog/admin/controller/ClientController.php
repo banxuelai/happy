@@ -25,7 +25,7 @@ class ClientController extends Controller
 		{
 			foreach ($projectList['rows'] as $key => $val)
 			{
-				$projectList['rows'][$key]['project_summary'] = str_replace('\n','<br/>',$val['project_summary']);
+				$projectList['rows'][$key]['project_summary'] = str_replace("\n","<br>",$val['project_summary']);
 			}
 		}
 		
