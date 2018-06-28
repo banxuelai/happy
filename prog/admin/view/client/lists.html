@@ -43,21 +43,21 @@
  									  </td>
 		                          </tr>
 		                          <tr>
-		                          	  <th class="form_table_th">预算:</th>
+		                          	  <th class="" style = "font-weight:normal">预算: {{item.project_fees}} 元</th>
 		                          	  <td>
-											{{item.project_fees}} 元
+											
  									  </td>
 		                          </tr>
 		                         <tr>
-		                          	  <th class="form_table_th">工期:</th>
+		                          	  <th class="" style = "font-weight:normal">工期: {{item.project_time}} 天</th>
 		                          	  <td>
-		                          	  {{item.project_time}} 天
+		                          	  
  									  </td>
 		                          </tr>
 		                          <tr>
 <!-- 		                          	  <th class="form_table_th">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:</th>
  -->		                          	  <td>
-											{{item.project_summary}}
+											<pre>{{item.project_summary}}</pre>
  									  </td>
 		                          </tr>
 		                          {% endfor %}
