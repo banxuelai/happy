@@ -21,6 +21,14 @@ class ClientController extends Controller
 		# 获取列表
 		$projectList = $project_model->getList($cond,-1);
 		
+		if(! empty($projectList['rows']))
+		{
+			foreach ($projectList['rows'] as $key => $val)
+			{
+				$projectList['rows'][$key]['project_summary'] = str_replace('\n','<br/>',$val['project_summary']);
+			}
+		}
+		
 		$this->display('client/lists.html', array(
 			'project_list' => $projectList['rows'],
 		));
