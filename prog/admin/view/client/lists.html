@@ -19,8 +19,8 @@
                           <header class="panel-heading">
                               	 {{studentInfo.name}} 的详细信息
                           </header>
-                          {% for key,item in project_list %}
                           <div class="panel-body">
+                          {% for key,item in project_list %}
                               <form class="form-inline" role="form">
                               <table class="form_table" style="border-collapse:separate; border-spacing:0px 5px;" id="">
 		                          <tbody>
@@ -53,9 +53,10 @@
 		                          </tbody>
 		                          </table>
                               </form>
-                          </div>
-                          <hr />
+                                                        <hr />
                           {% endfor %}
+                          </div>
+
                       </section>
                   </div>
               </div>
