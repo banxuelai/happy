@@ -12,22 +12,18 @@ class ClientController extends Controller
 	 */
 	public function lists()
 	{
+		# day条件
+		$day = intval($this->req->get('day'));
+		
 		$project_model = new ProjectModel();
 		
 		$cond = array(
 			'project_status' => 1,
+			'create_day' => ! empty($day) ? $day : date('Ymd',time()),	
 		);
 		
 		# 获取列表
 		$projectList = $project_model->getList($cond,-1);
-		
-/* 		if(! empty($projectList['rows']))
-		{
-			foreach ($projectList['rows'] as $key => $val)
-			{
-				$projectList['rows'][$key]['project_summary'] = str_replace("\n","<br>",$val['project_summary']);
-			}
-		} */
 		
 		$this->display('client/lists.html', array(
 			'project_list' => $projectList['rows'],
