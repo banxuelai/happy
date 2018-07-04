@@ -19,12 +19,12 @@
                           <header class="panel-heading">
                               	 {{studentInfo.name}} 的详细信息
                           </header>
-                          
+                          {% for key,item in project_list %}
                           <div class="panel-body">
                               <form class="form-inline" role="form">
                               <table class="form_table" style="border-collapse:separate; border-spacing:0px 5px;" id="">
 		                          <tbody>
-		                           {% for key,item in project_list %}
+		                           
 		                          <tr>
 <!-- 		                          	  <th class="form_table_th">预算:</th>
  -->		                          	  <td>
@@ -49,12 +49,13 @@
 											{{item.project_summary}}
  									  </td>
 		                          </tr>
-		                          {% endfor %}
+		                          
 		                          </tbody>
 		                          </table>
                               </form>
-                              <hr />
                           </div>
+                          <hr />
+                          {% endfor %}
                       </section>
                   </div>
               </div>
