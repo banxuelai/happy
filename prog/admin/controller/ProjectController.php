@@ -71,6 +71,7 @@ class ProjectController extends AuthController
                 'project_source' => $projectSource,
                 'project_url' => $projectUrl,
                 'create_time' => time(),
+            	'create_day' => date("Ymd"),
             );
             
             $project_model->insertOne($insertData);
