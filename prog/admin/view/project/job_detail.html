@@ -37,7 +37,9 @@
 		                          <tr>
 		                          	  <th class="form_table_th">项目简介</th>
 		                          	  <td>
-		                          	  		<script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
+		                          	  		<script id="editor" type="text/plain" style="width:1024px;height:500px;">
+												{{detail | raw }}
+											</script>
  									  </td>
 		                          </tr>
 								  <tr style="border:none;">
@@ -63,6 +65,11 @@
 
 <!-- script for city -->
 <script type="text/javascript">
+
+//编辑器初始化
+if($('#editor-box').length){
+     var editor = UE.getEditor('editor-box');
+}
 
 //提交按钮
 $('.btn-primary').click(function(){
