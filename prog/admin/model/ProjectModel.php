@@ -36,4 +36,19 @@ class ProjectModel extends Model
         }
         return $re;
     }
+    
+    // 日期列表
+    public function getDayList()
+    {
+    	$sql = "select create_day from project_info group by create_day";
+    	return $this->queryRows($sql);
+    }
+    
+    // 获取费用最大的单条记录
+    public function  getMaxFess($cond)
+    {
+    	$where_str = $this->getWhereStr($cond);
+    	$sql = "select  max(project_fees),project_title from project_info $where_str limit 1";
+    	$this->queryRow($sql);
+    }
 }

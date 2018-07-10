@@ -105,4 +105,86 @@ class ProjectController extends AuthController
             $this->success();
         }
     }
+    
+
+    /**
+     * @desc 获取当天标题
+     * @author bxl@gmail.com
+     * @date 2018-07-10
+     */
+    private function getJobTitle($create_day)
+    {
+    	$create_day = intval($create_day);
+    	$project_model = new ProjectModel();
+    	
+    	$item = $project_model->getMaxFess(array('create_day'=>$create_day));
+    	
+    	$title = '【乐接活】'.$item['project_fees'].'元开发'.$item['project_title'];
+    	
+    	return $title;
+    }
+    
+    /**
+     * @desc 推文列表
+     * @author bxl@gmail.com
+     * @date 2018-07-10
+     */
+    public function job_list()
+    {
+    	$project_model = new ProjectModel();
+    	
+    	# 获取项目日期
+    	$jobList = $project_model->getDayList();
+    	
+    	foreach ($jobList as $key => $val)
+    	{
+    		$create_day = intval($val['create_day']);
+    		$jobList[$key]['job_title'] = $this->getJobTitle($create_day);
+    	}
+    	
+    	$this->display('project/job_list.html', array(
+    			'title' => '推文列表',
+    			'nickname' => $this->getUserName(),
+    			'menu' => 'project',
+    			'sub' => 'job_list',
+    			'type' => $this->getTypebyUid(),
+    			'job_list' => $jobList,
+    	));
+    	
+    }
+    
+    /**
+     * @desc 推文详情
+     * @author bxl@gmail.com
+     * @date 2018-07-10
+     */
+    public function job_detail()
+    {
+    	$create_day = intval($this->req->get('create_day'));
+    	
+    	$project_model = new ProjectModel();
+    	
+    	# 获取当天列表
+    	$List = $project_model->getList(array('create_day'=>$create_day));
+    	
+    	# 拼接
+    	if(! empty($List)) 
+    	{
+    		foreach ($List as $key => $val)
+    		{
+    			$detail .= $val['project_title'].'<br/>'.'预算:'.$val['project_fees'].'<br/>'.'工期:'
+    					.$val['project_time'].'<br/>'.$val['project_summary'].'<br/>';
+    		}
+    	}
+
+
+    	$this->display('project/job_detail.html', array(
+    			'title' => '推文详情',
+    			'nickname' => $this->getUserName(),
+    			'menu' => 'project',
+    			'sub' => 'job_list',
+    			'type' => $this->getTypebyUid(),
+    			'detail' => $detail,
+    	));
+    }
 }
