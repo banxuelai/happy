@@ -168,12 +168,12 @@ class ProjectController extends AuthController
     	$List = $project_model->getList(array('create_day'=>$create_day));
     	
     	# 拼接
-    	if(! empty($List)) 
+    	if(! empty($List['rows'])) 
     	{
-    		foreach ($List as $key => $val)
+    		foreach ($List['rows'] as $key => $val)
     		{
-    			$detail .= $val['project_title'].'<br/>'.'预算:'.$val['project_fees'].'<br/>'.'工期:'
-    					.$val['project_time'].'<br/>'.$val['project_summary'].'<br/>';
+    			$detail .= $val['project_title'].'<br/>'.'预算:'.$val['project_fees'].'元'.'<br/>'.'工期:'
+    					.$val['project_time'].'天'.'<br/>'.$val['project_summary'].'<br/>';
     		}
     	}
 
