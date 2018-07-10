@@ -49,6 +49,6 @@ class ProjectModel extends Model
     {
     	$where_str = $this->getWhereStr($cond);
     	$sql = "select  max(project_fees),project_title from project_info $where_str limit 1";
-    	$this->queryRow($sql);
+    	return $this->queryRow($sql);
     }
 }

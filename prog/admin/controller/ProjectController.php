@@ -129,7 +129,7 @@ class ProjectController extends AuthController
      * @author bxl@gmail.com
      * @date 2018-07-10
      */
-    public function job_list()
+    public function jobList()
     {
     	$project_model = new ProjectModel();
     	
@@ -158,7 +158,7 @@ class ProjectController extends AuthController
      * @author bxl@gmail.com
      * @date 2018-07-10
      */
-    public function job_detail()
+    public function jobDetail()
     {
     	$create_day = intval($this->req->get('create_day'));
     	
