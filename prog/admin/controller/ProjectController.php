@@ -119,7 +119,7 @@ class ProjectController extends AuthController
     	
     	$item = $project_model->getMaxFess(array('create_day'=>$create_day));
     	
-    	$title = '【乐接活】'.$item['project_fees'].'元开发'.$item['project_title'];
+    	$title = '【乐接活】'.$create_day.'期'.$item['project_fees'].'元开发'.$item['project_title'];
     	
     	return $title;
     }

@@ -48,7 +48,7 @@ class ProjectModel extends Model
     public function  getMaxFess($cond)
     {
     	$where_str = $this->getWhereStr($cond);
-    	$sql = "select  max(project_fees),project_title from project_info $where_str limit 1";
+    	$sql = "select  max(project_fees),project_title,project_fees from project_info $where_str limit 1";
     	return $this->queryRow($sql);
     }
 }
