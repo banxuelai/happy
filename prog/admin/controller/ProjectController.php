@@ -10,6 +10,7 @@ class ProjectController extends AuthController
     private $sourceConfig = array(
         'shixian'  => '实现网',//实现网
         'codemart' => '码市', //码市
+        'jfh' => '解放号', //解放号
     );
     
     /**
