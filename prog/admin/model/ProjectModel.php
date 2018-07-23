@@ -40,7 +40,7 @@ class ProjectModel extends Model
     // 日期列表
     public function getDayList()
     {
-    	$sql = "select create_day from project_info group by create_day";
+    	$sql = "select create_day from project_info group by create_day order by create_time desc";
     	return $this->queryRows($sql);
     }
     
