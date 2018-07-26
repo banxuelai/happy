@@ -37,7 +37,7 @@ class TestController extends Controller
 		$redis = new RedisModel();
 		
 		$lockKey = $redis->getRealKey(self::RdKey_String_Setnx_Test_Lock, array(12));
-		
+		$lockKey = 'lock';
 		$lockStatus = $redis->getLock($lockKey, 5);
 		if(! lockStatus) {
 			throw  new Exception("请稍后重试");
