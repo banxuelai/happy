@@ -8,7 +8,7 @@
 class TestController extends Controller
 {
 	# 加锁key 
-	const RdKey_String_Setnx_Test_Lock = 'test_lock:%d';
+	const RdKey_String_Setnx_Test_Lock = 'lock:%d';
 	
 	public function syn(){
 		$file = fopen("/buaa.txt", "r");
