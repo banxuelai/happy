@@ -8,7 +8,7 @@
 class TestController extends Controller
 {
 	# 加锁key 
-	const RdKey_String_Setnx_Test_Lock = 'lock:%d';
+	const RdKey_String_Setnx_Test_Lock = 'test_lock:%d';
 	
 	public function syn(){
 		$file = fopen("/buaa.txt", "r");
@@ -37,9 +37,8 @@ class TestController extends Controller
 		$redis = new RedisModel();
 		
 		$lockKey = $redis->getRealKey(self::RdKey_String_Setnx_Test_Lock, array(12));
-		$lockKey = 'lock';
 		$lockStatus = $redis->getLock($lockKey, 5);
-		if(! lockStatus) {
+		if(! $lockStatus) {
 			throw  new Exception("请稍后重试");
 		}
 		
